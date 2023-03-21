@@ -1,16 +1,33 @@
 package com.prova.web.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Fiaba {
 
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int idFiaba;
+	
 	private String titolo;
 	private String testo;
+	
 	private String img;
 	private String metaInfo;
 	
+	
+	public Fiaba() {}
+
+	public Fiaba(String titolo, String testo, String img, String metaInfo) {
+		super();
+		this.titolo = titolo;
+		this.testo = testo;
+		this.img = img;
+		this.metaInfo = metaInfo;
+	}
+
 	public int getIdFiaba() {
 		return idFiaba;
 	}

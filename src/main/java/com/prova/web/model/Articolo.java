@@ -3,10 +3,14 @@ package com.prova.web.model;
 import org.springframework.boot.actuate.endpoint.web.Link;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Articolo {
 
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int idArticolo;
 	private Link link;
 	private String titolo;
@@ -14,9 +18,7 @@ public class Articolo {
 	
 	public Articolo() {}
 
-	public Articolo(int idArticolo, Link link, String titolo, String metaInfo) {
-		super();
-		this.idArticolo = idArticolo;
+	public Articolo(Link link, String titolo, String metaInfo) {
 		this.link = link;
 		this.titolo = titolo;
 		this.metaInfo = metaInfo;

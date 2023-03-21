@@ -1,10 +1,14 @@
 package com.prova.web.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class MetaInfo {
 
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private String meta_info;
 
 	public MetaInfo() {}

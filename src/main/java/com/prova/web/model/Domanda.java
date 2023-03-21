@@ -6,6 +6,8 @@ package com.prova.web.model;
  */
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -13,7 +15,7 @@ import jakarta.persistence.Table;
 @Table(name = "domanda")
 public class Domanda {
 
-	@Id
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int idDomanda;
 	private int idTest;
 	private String testo;
@@ -26,10 +28,8 @@ public class Domanda {
 
 	public Domanda() {}
 
-	public Domanda(int idDomanda,  int idTest, String meta_info, String testo, String risposta_corretta, String risposta1,
+	public Domanda(int idTest, String meta_info, String testo, String risposta_corretta, String risposta1,
 			String risposta2, String risposta3) {
-		super();
-		this.idDomanda = idDomanda;
 		this.testo = testo;
 		this.risposta_corretta = risposta_corretta;
 		this.idTest = idTest;

@@ -1,26 +1,21 @@
 package com.prova.web.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
 public class Salvataggio {
-
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int idSalvataggio;
 	private int idTest;
 	private String email;
 	private String risposta;
 	
 	public Salvataggio() {}
-	public Salvataggio( int idTest, String email, String risposta) {
+	public Salvataggio(int idTest, String email, String risposta) {
 		super();
-		this.idTest = idTest;
-		this.email = email;
-		this.risposta = risposta;
-	}
-	
-	public Salvataggio(int idSalvataggio, int idTest, String email, String risposta) {
-		super();
-		this.idSalvataggio = idSalvataggio;
 		this.idTest = idTest;
 		this.email = email;
 		this.risposta = risposta;

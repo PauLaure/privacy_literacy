@@ -1,6 +1,8 @@
 package com.prova.web.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 /*
  * Entity che descrive un test
@@ -8,7 +10,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Test {
 
-	@Id
+	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int idTest;
 	private String tipo;
 	
@@ -17,7 +19,6 @@ public class Test {
 	public Test() {	}
 
 	public Test(int idTest, String tipo) {
-		super();
 		this.idTest = idTest;
 		this.tipo = tipo;
 	}

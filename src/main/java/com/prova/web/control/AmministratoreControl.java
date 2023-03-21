@@ -234,7 +234,7 @@ public class AmministratoreControl {
 		System.out.println("sono in cercaTest");
 		String id=request.getParameter("idTest");
 		System.out.println("idTest: "+id);
-		Test test=testRep.findById(id).get();
+		Test test=testRep.findById(Integer.valueOf(id)).get();
 		System.out.println("Test trovato: "+test);
 		testRep.delete(test);
 		return "redirect:/admin/visualTest";
@@ -268,7 +268,7 @@ public class AmministratoreControl {
 		System.out.println("sono in cerca argomento post");
 		String id=request.getParameter("idStudio");
 		System.out.println("id studio: "+id);
-		Studio s=studioRep.findById(id).get();
+		Studio s=studioRep.findById(Integer.valueOf(id)).get();
 		studioRep.delete(s);
 		
 		return "redirect:/admin/visualStudio";
@@ -287,7 +287,7 @@ public class AmministratoreControl {
 		System.out.println("sono in cercaStudioMod");
 		
 		String id=req.getParameter("idStudio");
-		Studio studio=studioRep.findById(id).get();
+		Studio studio=studioRep.findById(Integer.valueOf(id)).get();
 		System.out.println(studio);
 		String nuovotit=req.getParameter("titolo");
 		String nuovaDe=req.getParameter("descrizione");
@@ -321,7 +321,7 @@ public class AmministratoreControl {
 		System.out.println("sono in cercaStudioMod");
 		
 		String id=req.getParameter("idTest");
-		Test test = testRep.findById(id).get();
+		Test test = testRep.findById(Integer.valueOf(id)).get();
 		
 		System.out.println(test);
 		String nuovoTipo=req.getParameter("tipo");
