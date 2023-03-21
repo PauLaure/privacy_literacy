@@ -52,7 +52,7 @@ public class TestControl {
 		System.out.println("sono in test princiaple con model and view");
 
 
-		ArrayList<Domanda> listaTP= domRep.findByIdTest("TP");
+		ArrayList<Domanda> listaTP= domRep.findByIdTest(2);
 
 
 		for(Domanda d : listaTP) {
@@ -73,16 +73,16 @@ public class TestControl {
 	public ModelAndView tp(HttpServletRequest request) {
 
 		System.out.println("sono in TP"); 
-		ArrayList<Domanda> listaTP= domRep.findByIdTest("TP");//cerco le domande il cui idTest è TP
+		ArrayList<Domanda> listaTP= domRep.findByIdTest(2);//cerco le domande il cui idTest è 2 (test base)
 
 
 		//scorro le domande
 		for(Domanda d : listaTP) {
-			System.out.println("domanda tp"+" "+d.getIdTest()+" "+d.getTesto());
+			System.out.println("domanda test base"+" "+d.getIdTest()+" "+d.getTesto());
 
 
 		}//mostro le domade all'utente
-		return new ModelAndView("tp","listaDomande",listaTP);
+		return new ModelAndView("test base","listaDomande",listaTP);
 
 
 
@@ -100,7 +100,7 @@ public class TestControl {
 
 		int punteggio=0;
 		
-		ArrayList<Domanda>listaTP=domRep.findByIdTest("TP");
+		ArrayList<Domanda>listaTP=domRep.findByIdTest(2);
 
 		System.out.println("Sono nel metodo post");
 		for(Domanda d : listaTP) {
@@ -507,9 +507,9 @@ public class TestControl {
 		//	ArrayList<Domanda> dom;
 		//vedere come inserire le domande
 		Test t = new Test();
-		t.setIdTest("001");
+		t.setIdTest(1);
 		//t.setLivello(0);
-		t.setTitolo("Malware");
+		t.setTipo("Malware");
 
 		testRep.save(t);
 
@@ -521,7 +521,7 @@ public class TestControl {
 	public String getById() {
 		Optional<Test> test=testRep.findById("0");
 
-		return test.get().getTitolo();
+		return test.get().getTipo();
 
 	}
 
@@ -531,7 +531,7 @@ public class TestControl {
 		Iterable<Test> listaTest=testRep.findAll();
 
 		listaTest.forEach((Test t)->{
-			System.out.println(t.getIdTest()+t.getTitolo());
+			System.out.println(t.getIdTest()+t.getTipo());
 
 		});
 		return "lista dei test";
@@ -565,12 +565,10 @@ public class TestControl {
 	public String update() {
 
 		Test t= testRep.findById("1").get();
-		t.setIdTest("11");
+		t.setIdTest(11);
 		//t.setPunteggio(1);
 		//	t.setLivelloPreparazione(3);
-		t.setTipo("principale");
-		t.setTitolo("titolo del test");
-
+		t.setTipo("basee");
 		testRep.save(t);
 		return "test aggiornato";
 	}

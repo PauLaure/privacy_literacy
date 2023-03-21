@@ -101,7 +101,7 @@ public class AmministratoreControl {
 		ArrayList<Test> listaTest = (ArrayList<Test>) testRep.findAll();
 		System.out.println("Lista test: ");
 		for(Test t : listaTest) {
-			System.out.println("Test: "+t.getIdTest()+" "+t.getTitolo()+" "+t.getTipo());
+			System.out.println("Test: "+t.getIdTest()+" "+t.getTipo());
 		}
 		
 		return new ModelAndView("stAmm","listaTest",listaTest);
@@ -196,7 +196,6 @@ public class AmministratoreControl {
 	public String addTest(@ModelAttribute("test") Test test,HttpServletRequest request, HttpServletResponse response) {
 		
 		System.out.println(test.getIdTest());
-		System.out.println(test.getTitolo());
 		System.out.println(test.getTipo());
 
 		
@@ -325,10 +324,8 @@ public class AmministratoreControl {
 		Test test = testRep.findById(id).get();
 		
 		System.out.println(test);
-		String nuovotit=req.getParameter("titolo");
 		String nuovoTipo=req.getParameter("tipo");
 		test.setIdTest(test.getIdTest());
-		test.setTitolo(nuovotit);
 		test.setTipo(nuovoTipo);
 		testRep.save(test);
 		
@@ -362,7 +359,7 @@ public class AmministratoreControl {
 		
 		domanda.setIdDomanda(domanda.getIdDomanda());
 		domanda.setTesto(nuovoTesto);
-		domanda.setIdTest(idTestNuov);
+		domanda.setIdTest(Integer.parseInt(idTestNuov));
 		domanda.setRisposta1(nuovaRisp1);
 		domanda.setRisposta2(nuovaRisp2);
 		domanda.setRisposta3(nuovaRisp3);

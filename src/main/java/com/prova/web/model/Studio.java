@@ -1,5 +1,7 @@
 package com.prova.web.model;
 
+import org.springframework.boot.actuate.endpoint.web.Link;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
@@ -10,27 +12,20 @@ import jakarta.persistence.Id;
 public class Studio {
 
 	@Id
-	private String idStudio;//SOO1D
+	private int idStudio;
 	
 	private String titolo;
 	private String descrizione;
+	private Link link_video;
+	private String meta_info;
 	
-	public Studio() {
-		
-	}
+	public Studio() {}
 
-	public Studio(String  idStudio, String titolo, String descrizione) {
-		super();
-		this.idStudio = idStudio;
-		this.titolo = titolo;
-		this.descrizione = descrizione;
-	}
-
-	public String getIdStudio() {
+	public int getIdStudio() {
 		return idStudio;
 	}
 
-	public void setIdStudio(String idStudio) {
+	public void setIdStudio(int idStudio) {
 		this.idStudio = idStudio;
 	}
 
@@ -50,12 +45,27 @@ public class Studio {
 		this.descrizione = descrizione;
 	}
 
+	public Link getLink_video() {
+		return link_video;
+	}
+
+	public void setLink_video(Link link_video) {
+		this.link_video = link_video;
+	}
+
+	public String getMeta_info() {
+		return meta_info;
+	}
+
+	public void setMeta_info(String meta_info) {
+		this.meta_info = meta_info;
+	}
+
 	@Override
 	public String toString() {
-		return "Studio [idStudio=" + idStudio + ", titolo=" + titolo + ", descrizione=" + descrizione + "]";
+		return "Studio [idStudio=" + idStudio + ", titolo=" + titolo + ", descrizione=" + descrizione + ", link_video="
+				+ link_video + ", meta_info=" + meta_info + "]";
 	}
-	
-	
-	  
+
 }
 

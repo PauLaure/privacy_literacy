@@ -8,7 +8,7 @@ import com.prova.web.model.Domanda;
 
 public interface DomandaRepository extends CrudRepository<Domanda,Integer> {
 
-	public ArrayList<Domanda> findByIdTest(String idTest);
+	public ArrayList<Domanda> findByIdTest(int idTest);
 	
 	
 

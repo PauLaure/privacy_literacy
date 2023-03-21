@@ -9,46 +9,28 @@ import jakarta.persistence.Id;
 public class Test {
 
 	@Id
-	private String idTest;  //T001
-	private String titolo;
+	private int idTest;
 	private String tipo;
 	
 	
 	
-	public Test() {
-		
-	}
+	public Test() {	}
 
-
-	public Test(String idTest, String titolo, String tipo) {
+	public Test(int idTest, String tipo) {
 		super();
 		this.idTest = idTest;
-		this.titolo = titolo;
 		this.tipo = tipo;
-		
 	}
 
 
-	public String getIdTest() {
+	public int getIdTest() {
 		return idTest;
 	}
 
 
-	public void setIdTest(String idTest) {
+	public void setIdTest(int idTest) {
 		this.idTest = idTest;
 	}
-
-
-	public String getTitolo() {
-		return titolo;
-	}
-
-
-	public void setTitolo(String titolo) {
-		this.titolo = titolo;
-	}
-
-
 	public String getTipo() {
 		return tipo;
 	}
@@ -58,12 +40,9 @@ public class Test {
 		this.tipo = tipo;
 	}
 
-
-
-
 	@Override
 	public String toString() {
-		return "Test [idTest=" + idTest + ", titolo=" + titolo + ", tipo=" + tipo + ","+ "]";
+		return "Test [idTest=" + idTest + ", tipologia test=" + tipo + ","+ "]";
 	}
 
 

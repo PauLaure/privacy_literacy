@@ -34,7 +34,7 @@ public class StudioControl {
 	public String add() {
 		
 		Studio s= new Studio();
-		s.setIdStudio("S001");
+		s.setIdStudio(1);
 		s.setTitolo("Argomento");
 		s.setDescrizione("Si tratta di un argomento di studio");
 		
