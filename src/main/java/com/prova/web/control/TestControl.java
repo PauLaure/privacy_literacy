@@ -519,7 +519,7 @@ public class TestControl {
 	@ResponseBody
 	@GetMapping("/getId")
 	public String getById() {
-		Optional<Test> test=testRep.findById("0");
+		Optional<Test> test=testRep.findById(0);
 
 		return test.get().getTipo();
 
@@ -553,7 +553,7 @@ public class TestControl {
 	@GetMapping("/delete")
 	public String delete() {
 
-		Optional<Test> test = testRep.findById("0");//aggiustare qui perchè non prende metodo, mentre su utente si
+		Optional<Test> test = testRep.findById(0);//aggiustare qui perchè non prende metodo, mentre su utente si
 		testRep.delete(test.get());//questo serve per far funzionare l'optional
 		return "test eliminato";
 	}
@@ -564,7 +564,7 @@ public class TestControl {
 	@GetMapping("update")
 	public String update() {
 
-		Test t= testRep.findById("1").get();
+		Test t= testRep.findById(1).get();
 		t.setIdTest(11);
 		//t.setPunteggio(1);
 		//	t.setLivelloPreparazione(3);

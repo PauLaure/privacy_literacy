@@ -47,14 +47,14 @@ public class StudioControl {
 	@GetMapping("/find")
 	public String findById() {
 		
-		Optional<Studio> stud=srep.findById("S002");
+		Optional<Studio> stud=srep.findById(2);
 		return stud.get().getTitolo();
 	}
 	@ResponseBody
 	@GetMapping("/update")
 	public String update() {
 		
-		Studio s = srep.findById("S003").get();
+		Studio s = srep.findById(3).get();
 		//s.setIdStudio("S002");
 		s.setDescrizione("afefad");
 		s.setTitolo("afdfs");
@@ -77,7 +77,7 @@ public class StudioControl {
 	@GetMapping("/delete")
 	public String delete() {
 		
-		Studio s = srep.findById("S004").get();
+		Studio s = srep.findById(4).get();
 		srep.delete(s);
 		return "studio eliminato";
 	}
