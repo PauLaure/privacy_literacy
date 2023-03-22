@@ -31,7 +31,7 @@ import repository.UtenteRepository;
  * Control relativo all'amministratore e tutte le operazioni che può fare
  * - Visualizzare o eliminare un utente
  * - Visualizzare, pubblicare, modificare un nuovo studio, test, domanda di un test o un gioco
- */
+ */ 
 @Controller
 @RequestMapping("/admin")
 public class AmministratoreControl {
