@@ -1,10 +1,7 @@
 package com.prova.web.control;
 
 import java.util.ArrayList;
-
-
 import org.springframework.beans.factory.annotation.Autowired;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,19 +9,28 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-
+import com.prova.web.model.Articolo;
 import com.prova.web.model.Domanda;
+import com.prova.web.model.Fiaba;
 import com.prova.web.model.Gioco;
+import com.prova.web.model.MetaInfo;
+import com.prova.web.model.Salvataggio;
 import com.prova.web.model.Studio;
+import com.prova.web.model.Suggerimento;
 import com.prova.web.model.Test;
 import com.prova.web.model.Utente;
 
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import repository.ArticoloRepository;
 import repository.DomandaRepository;
+import repository.FiabaRepository;
 import repository.GiocoRepository;
+import repository.MetaInfoRepository;
+import repository.SalvataggioRepository;
 import repository.StudioRepository;
+import repository.SuggerimentoRepository;
 import repository.TestRepository;
 import repository.UtenteRepository;
 /*
@@ -36,35 +42,44 @@ import repository.UtenteRepository;
 @RequestMapping("/admin")
 public class AmministratoreControl {
 
+	@Autowired
+	private ArticoloRepository artRep; //oggetto dell'interfaccia repository degli articoli
 	
 	@Autowired
-	private UtenteRepository utRep; // oggetto dell'interfaccia repository dell'utente
+	private DomandaRepository domRep; //oggetto dell'interfaccia repository delle domande
 	
+	@Autowired
+	private FiabaRepository fiabaRep; //oggetto dell'interfaccia repository delle fiabe
+
 	@Autowired
 	private GiocoRepository giocoRep; //oggetto dell'interfaccia repository dei giochi
-
 	
 	@Autowired
+	private MetaInfoRepository metaInfoRep; //oggetto dell'interfaccia repository delle meta informazioni
+
+	@Autowired
+	private SalvataggioRepository salvataggioRep; //oggetto dell'interfaccia repository del salvataggio delle risposte date
+
+	@Autowired
 	private StudioRepository studioRep; //oggetto dell'interfaccia repository di studio
+	
+	@Autowired
+	private SuggerimentoRepository suggerimentoRep; //oggetto dell'interfaccia repository del suggerimento
 	
 	@Autowired
 	private TestRepository testRep; //oggetto dell'interfaccia repository di un test
 	
 	@Autowired
-	private DomandaRepository domRep; //oggetto dell'interfaccia repository delle domande
-
+	private UtenteRepository utRep; // oggetto dell'interfaccia repository dell'utente
+		
 	//metodo che permette all'amministratore di visualizzare gli utenti
 	@GetMapping("/visualUtenti")
 	public ModelAndView visualizza(@ModelAttribute("listaUtenti") Utente utente,HttpServletRequest request, HttpServletResponse resp) {
 
 		System.out.println("sono nel visual utenti get");
-
 		Iterable<Utente> utenti= utRep.findAll();
-
-
-		utenti.forEach((Utente u)->{
+		utenti.forEach((Utente u)-> {
 			System.out.println(u.getEmail()+" "+u.getCognome()+" "+u.getNome());
-
 		});
 		
 		;
@@ -118,10 +133,70 @@ public class AmministratoreControl {
 		}
 		return new ModelAndView("sdAmm","listaDomande",listaDom);
 	}
+
+	//metodo che permette all'amministratore di visualizzare gli articoli
+	@GetMapping("/visualArticolo")
+	public ModelAndView visualizzaArticolo() {
+
+		ArrayList<Articolo> listaArt=(ArrayList<Articolo>) artRep.findAll();
+		System.out.println("lista articoli: ");
+		for( Articolo a: listaArt) {
+			System.out.println("Articolo: " +a.getIdArticolo() + " " + a.getTitolo() + " " + a.getLink());
+		}
+		return new ModelAndView("saAmm","listaArticolo",listaArt);
+	}
+
+	//metodo che permette all'amministratore di visualizzare le fiabe
+	@GetMapping("/visualFiaba")
+	public ModelAndView visualizzaFiaba() {
+
+		ArrayList<Fiaba> listaFiaba=(ArrayList<Fiaba>) fiabaRep.findAll();
+		System.out.println("lista fiabe: ");
+		for( Fiaba f: listaFiaba) {
+			System.out.println("Fiaba: " + f.getIdFiaba() + " " + f.getTitolo() + " " + f.getTesto());
+		}
+		return new ModelAndView("sfAmm","listaFiaba",listaFiaba);
+	}
+
+	//metodo che permette all'amministratore di visualizzare le meta informazioni
+	@GetMapping("/visualMetaInfo")
+	public ModelAndView visualizzaMetaInfo() {
+
+		ArrayList<MetaInfo> listaMetaInfo=(ArrayList<MetaInfo>) metaInfoRep.findAll();
+		System.out.println("lista meta info: ");
+		for(MetaInfo mi: listaMetaInfo) {
+			System.out.println("Meta: " +mi.getIdMeta_info() + " " + mi.getMeta_info());
+		}
+		return new ModelAndView("smiAmm","listaMetaInfo",listaMetaInfo);
+	}
+
+	//metodo che permette all'amministratore di visualizzare le risposte dell'utente
+	@GetMapping("/visualSalvataggio")
+	public ModelAndView visualizzaSalvataggio() {
+
+		ArrayList<Salvataggio> listasalvataggio=(ArrayList<Salvataggio>) salvataggioRep.findAll();
+		System.out.println("lista risposte: ");
+		for( Salvataggio s: listasalvataggio) {
+			System.out.println("Salvataggio: " + s.getIdSalvataggio() + " " + s.getEmail() + " " + s.getIdTest() + " " + s.getRisposta());
+		}
+		return new ModelAndView("ssaAmm","listaSalvataggio",listasalvataggio);
+	}
+
+	//metodo che permette all'amministratore di visualizzare i suggerimenti
+	@GetMapping("/visualSuggerimento")
+	public ModelAndView visualizzaSuggerimento() {
+
+		ArrayList<Suggerimento> listaSugg=(ArrayList<Suggerimento>) suggerimentoRep.findAll();
+		System.out.println("lista suggerimenti: ");
+		for(Suggerimento s: listaSugg) {
+			System.out.println("Suggerimento: " +s.getIdSuggerimento() + " " + s.getEmail() + " " + s.getArgSuggerito());
+		}
+		return new ModelAndView("ssuAmm","listaSuggerimento",listaSugg);
+	}
+
+
 	@GetMapping("/cerca")
 	public String cerca(HttpServletRequest request) {
-		
-		
 		return "cerca";
 	}
 	
@@ -390,7 +465,6 @@ public class AmministratoreControl {
 		
 		return "redirect:/admin/visualGioco";
 	}
-	
 
 	@GetMapping("/nuovoStudio")
 	public String nuovoStudio() {
