@@ -4,25 +4,25 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "meta_info")
 public class MetaInfo {
 
-	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	@Id 
 	private String meta_info;
 
 	public MetaInfo() {}
-	
+
+	/**
+	 * @param meta_info
+	 */
 	public MetaInfo(String meta_info) {
+		super();
 		this.meta_info = meta_info;
-
 	}
 
-	public int getIdMeta_info(){
-		return id;
-	}
-	
 	public String getMeta_info() {
 		return meta_info;
 	}
@@ -30,10 +30,6 @@ public class MetaInfo {
 	public void setMeta_info(String meta_info) {
 		this.meta_info = meta_info;
 	}
-
-	@Override
-	public String toString() {
-		return "MetaInfo [meta_info=" + meta_info + "]";
-	}
+	
 	
 }

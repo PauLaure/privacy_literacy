@@ -4,28 +4,30 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "fiaba")
 public class Fiaba {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int idFiaba;
 	
-	private String titolo;
-	private String testo;
+	private String titolo_fiaba;
+	private String testo_fiaba;
 	
-	private String img;
-	private String metaInfo;
+	private String image_path;
+	private String meta_info;
 	
 	
 	public Fiaba() {}
 
-	public Fiaba(String titolo, String testo, String img, String metaInfo) {
+	public Fiaba(String titolo_fiaba, String testo_fiaba, String image_path, String meta_info) {
 		super();
-		this.titolo = titolo;
-		this.testo = testo;
-		this.img = img;
-		this.metaInfo = metaInfo;
+		this.titolo_fiaba = titolo_fiaba;
+		this.testo_fiaba = testo_fiaba;
+		this.image_path = image_path;
+		this.meta_info = meta_info;
 	}
 
 	public int getIdFiaba() {
@@ -37,41 +39,44 @@ public class Fiaba {
 	}
 	
 	public String getTitolo() {
-		return titolo;
+		return titolo_fiaba;
 	}
 	
 	public void setTitolo(String titolo) {
-		this.titolo = titolo;
+		this.titolo_fiaba = titolo_fiaba;
 	}
 	
 	public String getTesto() {
-		return testo;
+		return testo_fiaba;
 	}
 	
 	public void setTesto(String testo) {
-		this.testo = testo;
+		this.testo_fiaba = testo_fiaba;
 	}
 	
 	public String getImg() {
-		return img;
+		return image_path;
 	}
 	
 	public void setImg(String img) {
-		this.img = img;
+		this.image_path = image_path;
 	}
 	
 	public String getMetaInfo() {
-		return metaInfo;
+		return meta_info;
 	}
 	
 	public void setMetaInfo(String metaInfo) {
-		this.metaInfo = metaInfo;
+		this.meta_info = meta_info;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Fiaba [idFiaba=" + idFiaba + ", titolo=" + titolo + ", testo=" + testo + ", img=" + img + ", metaInfo="
-				+ metaInfo + "]";
+		return "Fiaba [idFiaba=" + idFiaba + ", titolo_fiaba=" + titolo_fiaba + ", testo_fiaba=" + testo_fiaba
+				+ ", image_path=" + image_path + ", meta_info=" + meta_info + "]";
 	}
+	
+	
+	
 	
 }
