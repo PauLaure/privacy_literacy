@@ -1,30 +1,29 @@
 package com.prova.web.model;
 
+import org.springframework.boot.actuate.endpoint.web.Link;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "articolo")
 public class Articolo {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int idArticolo;
-	private String link;
+	private Link link;
 	private String titolo;
 	private String metaInfo;
 	
 	public Articolo() {}
 
-	public Articolo(String link, String titolo, String metaInfo) {
+	public Articolo(Link link, String titolo, String metaInfo) {
 		this.link = link;
 		this.titolo = titolo;
 		this.metaInfo = metaInfo;
 	}
-	
-	
+
 	public int getIdArticolo() {
 		return idArticolo;
 	}
@@ -33,11 +32,11 @@ public class Articolo {
 		this.idArticolo = idArticolo;
 	}
 	
-	public String getLink() {
+	public Link getLink() {
 		return link;
 	}
 	
-	public void setLink(String link) {
+	public void setLink(Link link) {
 		this.link = link;
 	}
 	

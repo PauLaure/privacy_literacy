@@ -454,8 +454,8 @@ public class TestControl {
 		}
 
 		System.out.println("L'utente "+utente.toString()+" "+" ha ottenuto un punteggio e: "+punteggio);
-		utente.setPercentuale(punteggio);
-		System.out.println("SETTO IL PUNTEGGIO "+utente.getPercentuale());
+		utente.setPunteggio(punteggio);
+		System.out.println("SETTO IL PUNTEGGIO "+utente.getPunteggio());
 		//salvo l'utente
 
 

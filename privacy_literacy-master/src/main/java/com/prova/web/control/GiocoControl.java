@@ -42,7 +42,7 @@ public class GiocoControl {
 	
 	@ResponseBody
 	@GetMapping("/find")
-	public int getById() {
+	public String getById() {
 		Optional<Gioco> gioco=giocoRep.findById("G003");
 	
 		return gioco.get().getIdGioco();
@@ -61,7 +61,7 @@ public class GiocoControl {
 	public String add() {
 		
 		Gioco g = new Gioco();
-		g.setIdGioco(7);
+		g.setIdGioco("G007");
 		g.setTitolo("Giochino");
 		g.setDescrizione("Che bel gioco");
 		
@@ -69,13 +69,13 @@ public class GiocoControl {
 		return "gioco aggiunto"+" "+g.getIdGioco();
 	}
 	
-//	@ResponseBody
-//	@GetMapping("/update")
-//	public String update() {
-//		
-//		Gioco g = giocoRep.findById(7).get();
-//		g.setTitolo("GAME");
-//		giocoRep.save(g);
-//		return "gioco aggiornato";
-//	}
+	@ResponseBody
+	@GetMapping("/update")
+	public String update() {
+		
+		Gioco g = giocoRep.findById("G007").get();
+		g.setTitolo("GAME");
+		giocoRep.save(g);
+		return "gioco aggiornato";
+	}
 }

@@ -4,15 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-
+/*
+ * Entity che descrive un test
+ */
 @Entity
-@Table(name = "test")
 public class Test {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int idTest;
-	
 	private String tipo;
 	
 	

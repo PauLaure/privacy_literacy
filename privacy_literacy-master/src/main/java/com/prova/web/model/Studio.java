@@ -1,13 +1,16 @@
 package com.prova.web.model;
 
+import org.springframework.boot.actuate.endpoint.web.Link;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
+/*
+ * Entity che descrive un argomento di studio
+ */
 @Entity
-@Table(name = "argomento_studio")
 public class Studio {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
@@ -15,7 +18,7 @@ public class Studio {
 	
 	private String titolo;
 	private String descrizione;
-	private String link_video;
+	private Link link_video;
 	private String meta_info;
 	
 	public Studio() {}
@@ -44,11 +47,11 @@ public class Studio {
 		this.descrizione = descrizione;
 	}
 
-	public String getLink_video() {
+	public Link getLink_video() {
 		return link_video;
 	}
 
-	public void setLink_video(String link_video) {
+	public void setLink_video(Link link_video) {
 		this.link_video = link_video;
 	}
 

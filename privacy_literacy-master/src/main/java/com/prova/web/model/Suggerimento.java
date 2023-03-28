@@ -4,15 +4,12 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "progresso_studio")
 public class Suggerimento {
 
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
 	private int idSuggerimento;
-	
 	private String email;
 	private int idTest;
 	
