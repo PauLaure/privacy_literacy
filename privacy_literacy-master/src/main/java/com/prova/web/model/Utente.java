@@ -1,22 +1,24 @@
 package com.prova.web.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-/*
- * Entity che descrive l'utente
- */
+import jakarta.persistence.Table;
+
 @Entity
+@Table(name = "utente")
 public class Utente {
 	
-	@Id
+	@Id 
 	private String email;
-	private String password;
 	
+	private String password;
 	private String nome;
 	private String cognome;
 	private String dataNascita;
 	
-	private int punteggio;
+	private int percentuale;
 
 	private String livello;
 	
@@ -25,14 +27,14 @@ public class Utente {
 	}
 
 	
-	public Utente(String email, String password, String nome, String cognome, String dataNascita, int punteggio,String livello) {
+	public Utente(String email, String password, String nome, String cognome, String dataNascita, int percentuale, String livello) {
 		super();
 		this.email = email;
 		this.password = password;
 		this.nome = nome;
 		this.cognome = cognome;
 		this.dataNascita = dataNascita;
-		this.punteggio=punteggio;
+		this.percentuale=percentuale;
 		this.livello=livello;
 		
 	}
@@ -72,15 +74,18 @@ public class Utente {
 		this.dataNascita = dataNascita;
 	}
 
+	
+	
+	public int getPercentuale() {
+		return percentuale;
+	}
 
-	public void setPunteggio(int punteggio) {
-		this.punteggio = punteggio;
+
+	public void setPercentuale(int percentuale) {
+		this.percentuale = percentuale;
 	}
-	
-	public int getPunteggio() {
-		return punteggio;
-	}
-	
+
+
 	public void setLivello(String livello) {
 		this.livello = livello;
 	}
@@ -93,22 +98,7 @@ public class Utente {
 	@Override
 	public String toString() {
 		return "Utente [email=" + email + ", password=" + password + ", nome=" + nome + ", cognome=" + cognome
-				+ ", dataNascita=" + dataNascita + ", punteggio=" + punteggio + ", livello=" + livello + "]";
+				+ ", dataNascita=" + dataNascita + ", percentuale=" + percentuale + ", livello=" + livello + "]";
 	}
-
-
-	
-
-
-
-
-
-	
-
-	
-	
-	
-	
-	
 
 }

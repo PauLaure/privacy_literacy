@@ -165,7 +165,7 @@ public class AmministratoreControl {
 		ArrayList<MetaInfo> listaMetaInfo=(ArrayList<MetaInfo>) metaInfoRep.findAll();
 		System.out.println("lista meta info: ");
 		for(MetaInfo mi: listaMetaInfo) {
-			System.out.println("Meta: " +mi.getIdMeta_info() + " " + mi.getMeta_info());
+			System.out.println("Meta: " + mi.getMeta_info());
 		}
 		return new ModelAndView("smiAmm","listaMetaInfo",listaMetaInfo);
 	}

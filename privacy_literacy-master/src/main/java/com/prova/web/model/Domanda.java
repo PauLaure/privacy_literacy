@@ -24,18 +24,20 @@ public class Domanda {
 	private String risposta1;
 	private String risposta2;
 	private String risposta3;
+	private String risposta4;
 
 
 	public Domanda() {}
 
 	public Domanda(int idTest, String meta_info, String testo, String risposta_corretta, String risposta1,
-			String risposta2, String risposta3) {
+			String risposta2, String risposta3, String risposta4) {
 		this.testo = testo;
 		this.risposta_corretta = risposta_corretta;
 		this.idTest = idTest;
 		this.risposta1 = risposta1;
 		this.risposta2 = risposta2;
 		this.risposta3 = risposta3;
+		this.risposta4 = risposta4;
 		this.meta_info= meta_info;
 	}
 
@@ -103,12 +105,22 @@ public class Domanda {
 		this.meta_info = meta_info;
 	}
 
+	public String getRisposta4() {
+		return risposta4;
+	}
+
+	public void setRisposta4(String risposta4) {
+		this.risposta4 = risposta4;
+	}
+
 	@Override
 	public String toString() {
-		return "Domanda [idDomanda=" + idDomanda + ", testo=" + testo + ", risposta_corretta=" + risposta_corretta
-				+ ", idTest=" + idTest + ", risposta1=" + risposta1 + ", risposta2=" + risposta2 + ", risposta3="
-				+ risposta3 + ", meta info=" + meta_info + "]";
+		return "Domanda [idDomanda=" + idDomanda + ", idTest=" + idTest + ", testo=" + testo + ", risposta_corretta="
+				+ risposta_corretta + ", meta_info=" + meta_info + ", risposta1=" + risposta1 + ", risposta2="
+				+ risposta2 + ", risposta3=" + risposta3 + ", risposta4=" + risposta4 + "]";
 	}
+
+	
 
 
 
